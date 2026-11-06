@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Karthik Prakash Kallakuri">
+<meta property="og:description" content="Senior Cloud, DevSecOps and MLOps Engineer in Hyderabad, India.">
+<meta property="og:type" content="profile">
+<title>Karthik Prakash Kallakuri</title>
+<meta name="description" content="Karthik Prakash Kallakuri: Senior Cloud, DevSecOps and MLOps Engineer in Hyderabad, India. Azure, AKS, Terraform, CI/CD, pipeline security and GPU workloads.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout concept: a build log. The security pipeline runs as the one wide, ordered exhibit; everything else stays in a calm single reading column with a label rail. */
+:root {
+  --bg: #f2f6f6;
+  --surface: #ffffff;
+  --ink: #122b30;
+  --muted: #4f666b;
+  --line: #cfdcdd;
+  --accent: #0a6f6c;
+  --accent-soft: #d9eeec;
+  --wip: #8a5a00;
+  --wip-soft: #f8ecd2;
+  --display: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+  --mono: "IBM Plex Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1a1d; --surface: #152528; --ink: #e6f0f0; --muted: #a0b5b8; --line: #2a4044;
+    --accent: #5fd0c8; --accent-soft: #173a3b; --wip: #eebc62; --wip-soft: #3a2d12; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1a1d; --surface: #152528; --ink: #e6f0f0; --muted: #a0b5b8; --line: #2a4044;
+  --accent: #5fd0c8; --accent-soft: #173a3b; --wip: #eebc62; --wip-soft: #3a2d12; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 400 16px/1.6 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1020px; margin: 0 auto; padding-block: 56px 48px; display: grid; gap: 56px; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.mono { font-family: var(--mono); font-size: .8125rem; }
+
+/* Hero */
+.hero { display: grid; gap: 18px; }
+.hero .role { font-family: var(--mono); font-size: .875rem; color: var(--accent); letter-spacing: .02em; }
+h1 { font: 700 clamp(2.5rem, 7.4vw, 4.75rem)/1.02 var(--display); letter-spacing: -.02em; }
+.lede { font-size: 1.1875rem; line-height: 1.5; max-width: 62ch; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 22px; color: var(--muted); font-size: .9375rem; align-items: center; }
+.copy { font: 500 .8125rem var(--body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 3px 9px; cursor: pointer; }
+.copy:hover { border-color: var(--accent); }
+
+/* Section with label rail */
+.sec { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 12px 32px; border-top: 1px solid var(--line); padding-top: 18px; }
+.sec > h2 { font: 500 .8125rem/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+.stack { display: grid; gap: 28px; min-width: 0; }
+.item { display: grid; gap: 6px; min-width: 0; }
+.item h3 { font: 700 1.3125rem/1.25 var(--display); }
+.item p, .item ul { max-width: 68ch; }
+.item ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.pill { justify-self: start; font: 500 .75rem var(--mono); padding: 2px 8px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); }
+.pill.wip { background: var(--wip-soft); color: var(--wip); }
+
+/* Pipeline exhibit */
+.pipeline { display: grid; gap: 14px; min-width: 0; }
+.pipeline .head { display: grid; gap: 6px; max-width: 68ch; }
+.pipeline h2 { font: 700 clamp(1.5rem, 3.4vw, 2.125rem)/1.15 var(--display); letter-spacing: -.01em; }
+.track { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; list-style: none; margin: 8px 0 0; padding: 0; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); overflow: hidden; }
+.stage { padding: 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.stage + .stage { border-left: 1px solid var(--line); }
+.stage .when { font: 500 .75rem var(--mono); color: var(--accent); letter-spacing: .02em; }
+.stage h3 { font: 700 1.1875rem/1.2 var(--display); }
+.stage ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; font-size: .9375rem; }
+.stage b { font: 500 .8125rem var(--mono); display: block; }
+.stage span { color: var(--muted); font-size: .875rem; line-height: 1.4; display: block; }
+
+/* Experience */
+.job { display: grid; gap: 2px; }
+.job .dates { font: 400 .8125rem var(--mono); color: var(--muted); }
+.job h3 { font: 700 1.125rem/1.3 var(--display); }
+.job p { margin-top: 6px; max-width: 68ch; }
+
+/* Skills */
+dl.skills { margin: 0; display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 10px 20px; }
+dl.skills dt { font-weight: 600; font-size: .9375rem; }
+dl.skills dd { margin: 0; color: var(--muted); font-size: .9375rem; }
+
+@media (max-width: 720px) {
+  .wrap { padding-block: 32px; gap: 40px; }
+  .sec { grid-template-columns: minmax(0, 1fr); }
+  .track { grid-template-columns: minmax(0, 1fr); }
+  .stage + .stage { border-left: 0; border-top: 1px solid var(--line); }
+  dl.skills { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  dl.skills dd { margin-bottom: 10px; }
+}
+</style>
+
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <div class="role">Senior Cloud, DevSecOps &amp; MLOps Engineer</div>
+    <h1>Karthik Prakash Kallakuri</h1>
+    <p class="lede">I build and run cloud platforms from the first subnet to the production release: Azure infrastructure, Kubernetes, CI/CD, pipeline security and GPU environments for ML workloads.</p>
+    <div class="facts">
+      <span>Hyderabad, India</span>
+      <a href="https://www.linkedin.com/in/karthik-prakash-kallakuri">LinkedIn</a>
+      <span><span id="email">kkarthik112@gmail.com</span> <button class="copy" id="copyBtn" type="button">Copy</button></span>
+    </div>
+  </header>
+
+  <section class="pipeline" aria-labelledby="pipe-h">
+    <div class="head">
+      <h2 id="pipe-h">A security program with no licence bill</h2>
+      <p>I designed and implemented this three-phase program on SquadSync's existing Azure DevOps pipeline, using open-source tools on self-hosted Linux agents. Each phase catches what the one before it can't.</p>
+    </div>
+    <ol class="track">
+      <li class="stage">
+        <div class="when">Phase 1: on every pull request</div>
+        <h3>PR security gate</h3>
+        <ul>
+          <li><b>Gitleaks</b><span>Secret scanning, as a hard gate</span></li>
+          <li><b>Bandit, Semgrep</b><span>SAST for Python and TypeScript</span></li>
+          <li><b>Checkov</b><span>Helm and infrastructure-as-code scanning</span></li>
+          <li><b>Ollama + DeepSeek-Coder</b><span>Local AI code review with inline findings</span></li>
+        </ul>
+      </li>
+      <li class="stage">
+        <div class="when">Phase 2: at build time</div>
+        <h3>Container gate</h3>
+        <ul>
+          <li><b>Hadolint</b><span>Dockerfile linting</span></li>
+          <li><b>Trivy</b><span>Blocks the push to ACR on HIGH and CRITICAL findings</span></li>
+          <li><b>Syft</b><span>CycloneDX SBOMs for supply-chain visibility</span></li>
+        </ul>
+      </li>
+      <li class="stage">
+        <div class="when">Phase 3: in the cluster</div>
+        <h3>Runtime security</h3>
+        <ul>
+          <li><b>OPA Gatekeeper</b><span>Admission control</span></li>
+          <li><b>Falco</b><span>Runtime threat detection as a DaemonSet</span></li>
+          <li><b>Network policies</b><span>Limits on pod traffic</span></li>
+          <li><b>OWASP ZAP</b><span>DAST against running services</span></li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <section class="sec">
+    <h2>Selected work</h2>
+    <div class="stack">
+      <article class="item">
+        <span class="pill">Built at work</span>
+        <h3>SquadSync's Azure platform, from zero</h3>
+        <p>SquadSync is an athlete health and performance monitoring platform. I provisioned its Azure environment with Terraform modules I wrote from scratch, covering VNet, NSG, Application Gateway, ACR, AKS, App Services and Storage.</p>
+        <ul>
+          <li>FastAPI microservices on AKS across dev, testing and enhanced namespaces, deployed with Helm rolling updates</li>
+          <li>Multi-stage Azure DevOps and Jenkins pipelines with PR-triggered build, test and deploy</li>
+          <li>About 40% lower daily Azure spend through right-sizing and idle-VM scheduling</li>
+          <li>Prometheus and Grafana for infrastructure and ML-training metrics and alerting</li>
+        </ul>
+      </article>
+      <article class="item">
+        <span class="pill">Built at work</span>
+        <h3>Production troubleshooting</h3>
+        <ul>
+          <li>Resolved HTTPS/HTTP and cross-origin request failures between Next.js and FastAPI, using Application Gateway SSL termination, custom gateway rules and NGINX</li>
+          <li>Moved the frontend from Flutter to React.js and then Next.js when App Service couldn't support Flutter web, rebuilding the pipelines at each step</li>
+          <li>Worked around App Service Python runtime gaps by pinning versions and validating dependencies before deployment</li>
+        </ul>
+      </article>
+      <article class="item">
+        <span class="pill">Built at work</span>
+        <h3>GPU environments and ML pipelines</h3>
+        <p>I set up H100, A100 and T4 Azure VMs for OpenTSLM and Unsloth training and rPPG inference, checking GPU drivers, compute readiness and storage before each run. I also built ETL pipelines for YOLO-based motion detection, and an ArXiv research agent using RAG, LangGraph and Apache Airflow.</p>
+      </article>
+      <article class="item">
+        <span class="pill wip">In progress</span>
+        <h3>Moving to a self-managed VM cluster with GitOps</h3>
+        <p>I'm migrating platform workloads from Azure to a self-managed VM cluster with GitOps-based deployments. The migration isn't complete yet.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>Experience</h2>
+    <div class="stack">
+      <div class="job">
+        <span class="dates">2022 – Present</span>
+        <h3>Azure Cloud, DevSecOps &amp; MLOps Engineer, Assistive Sports Technologies Pvt. Ltd.</h3>
+        <p>I moved from a mobile POC and its Linux backend into full DevOps ownership of the SquadSync platform. The microservices approach I proposed became its foundation. I also served as Scrum Master.</p>
+      </div>
+      <div class="job">
+        <span class="dates">Sep 2016 – Present</span>
+        <h3>Senior Engineer (DevOps &amp; Mobile), Hanumayamma Innovations &amp; Technologies Pvt. Ltd.</h3>
+        <p>I own deployment and release management for the application suite on Windows/IIS, and I managed AWS deployment (EC2, S3, RDS) for the Sanjeevani EHR backend. I also built Android apps in Java and Kotlin for healthcare and agriculture.</p>
+      </div>
+      <div class="job">
+        <span class="dates">May 2014 – Apr 2016</span>
+        <h3>Junior Engineer, Indian Road Survey and Management Pvt. Ltd.</h3>
+        <p>I produced road-condition reports and led field teams in data gathering and infrastructure assessments.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>Skills</h2>
+    <dl class="skills">
+      <dt>Cloud</dt><dd>Azure (AKS, ACR, App Service, Application Gateway, VNet, NSG, Azure Monitor, Storage), AWS (EC2, S3, RDS)</dd>
+      <dt>Containers</dt><dd>Kubernetes, Docker, Helm</dd>
+      <dt>CI/CD &amp; IaC</dt><dd>Azure DevOps, Jenkins, GitHub Actions, Terraform, GitOps (in progress)</dd>
+      <dt>Security</dt><dd>Gitleaks, Bandit, Semgrep, Checkov, Trivy, Hadolint, Syft, Falco, OPA Gatekeeper, OWASP ZAP, SonarQube</dd>
+      <dt>Observability</dt><dd>Prometheus, Grafana, Azure Monitor</dd>
+      <dt>MLOps</dt><dd>OpenTSLM, Unsloth, LangGraph, Apache Airflow, ETL pipelines, GPU VM configuration</dd>
+      <dt>Languages &amp; OS</dt><dd>Python, Bash, PowerShell, Java, Kotlin, SQL; Linux and Windows Server/IIS</dd>
+    </dl>
+  </section>
+
+  <section class="sec">
+    <h2>Education &amp; training</h2>
+    <div class="stack" style="gap:10px">
+      <p>B.Tech, Computer Science &amp; Engineering, CVSR Engineering College (JNTU Hyderabad), 2008–2012</p>
+      <p>Pursuing SC-500 (Cloud and AI Security Engineer Associate) and AZ-104 (Azure Administrator Associate)</p>
+      <p>HIPAA Compliance Training, certificate of completion from HIPAA Training US (0.5 credit hours; issued Sep 2026, valid to Sep 2027)</p>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var btn = document.getElementById('copyBtn');
+  var email = document.getElementById('email');
+  btn.addEventListener('click', function () {
+    function selectIt() {
+      var range = document.createRange();
+      range.selectNodeContents(email);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      btn.textContent = 'Selected';
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email.textContent).then(function () {
+        btn.textContent = 'Copied';
+      }).catch(selectIt);
+    } else {
+      selectIt();
+    }
+  });
+})();
+</script>
+</body>
+</html>
